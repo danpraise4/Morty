@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:morty/core/dependencies/k_route.dart';
 import 'package:morty/core/navigator/krouter_observer.dart';
 import 'package:morty/core/resources/colors.dart';
+import 'package:morty/features/introduction/app/pages/splash.dart';
 
 part 'routes.dart';
 
@@ -41,6 +44,14 @@ class _MortyAppState extends State<MortyApp> with WidgetsBindingObserver {
       ensureScreenSize: true,
       designSize: MediaQuery.of(context).size,
       builder: (context, child) {
+        SystemChrome.setSystemUIOverlayStyle(
+          const SystemUiOverlayStyle(
+            statusBarColor: Colors.transparent,
+            statusBarBrightness: Brightness.light,
+            statusBarIconBrightness: Brightness.dark,
+          ),
+        );
+
         return MaterialApp(
           navigatorKey: MortyApp.navKey,
           navigatorObservers: [PlayerObserver()],
