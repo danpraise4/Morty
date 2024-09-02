@@ -5,21 +5,22 @@ import 'package:flutter_rating_stars/flutter_rating_stars.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:morty/app.dart';
 import 'package:morty/core/extension/numbers_extensions.dart';
+import 'package:morty/core/extension/string_extensions.dart';
 import 'package:morty/core/resources/colors.dart';
 import 'package:morty/core/resources/constants.dart';
 import 'package:morty/core/widgets/app_button.dart';
 import 'package:morty/features/morty/app/pages/character.dart';
 import 'package:morty/features/morty/data/models/character.model.dart';
 
-class SingleProduct extends StatefulWidget {
-  const SingleProduct({super.key, required this.character});
+class SingleCharacter extends StatefulWidget {
+  const SingleCharacter({super.key, required this.character});
   final CharacterModel character;
 
   @override
-  State<SingleProduct> createState() => _SingleProductState();
+  State<SingleCharacter> createState() => _SingleCharacterState();
 }
 
-class _SingleProductState extends State<SingleProduct> {
+class _SingleCharacterState extends State<SingleCharacter> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -40,6 +41,7 @@ class _SingleProductState extends State<SingleProduct> {
                 borderRadius: 10.br,
                 child: CachedNetworkImage(
                   imageUrl: widget.character.image,
+                
                   height: 130.h,
                   width: 250.w,
                   fit: BoxFit.cover,
@@ -47,7 +49,7 @@ class _SingleProductState extends State<SingleProduct> {
               ),
               h10,
               Text(
-                widget.character.gender,
+                '${widget.character.gender} • ${widget.character.species.capitalizeEach}',
                 style: TextStyle(
                     fontWeight: FontWeight.w400,
                     color: Palette.blueTint2,
@@ -56,24 +58,17 @@ class _SingleProductState extends State<SingleProduct> {
               h5,
               Text(
                 widget.character.name,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
                 style: const TextStyle(fontWeight: FontWeight.w600),
               ),
               h10,
-              RatingStars(
-                axis: Axis.horizontal,
-                value: 2,
-                onValueChanged: (v) {},
-                starCount: 5,
-                starSize: 17,
-                maxValue: 5,
-                starSpacing: 2,
-                valueLabelVisibility: false,
-                animationDuration: const Duration(milliseconds: 1000),
-                valueLabelPadding:
-                    const EdgeInsets.symmetric(vertical: 1, horizontal: 8),
-                valueLabelMargin: const EdgeInsets.only(right: 8),
-                starOffColor: const Color(0xffe7e8ea),
-                starColor: Palette.primary,
+              Text(
+                'First Seen in',
+                style: TextStyle(
+                    fontWeight: FontWeight.w400,
+                    color: Palette.blueTint2,
+                    fontSize: 13.sp),
               ),
               const Spacer(),
               Row(
@@ -87,8 +82,12 @@ class _SingleProductState extends State<SingleProduct> {
                   ),
                   const Spacer(),
                   AppButton(
-                    onPressed: () {},
+                    onPressed: () => MortyApp.navKey.currentState?.pushNamed(
+                        Character.route,
+                        arguments: (widget.character)),
                     width: 30,
+                    icon: Icons.arrow_forward_ios_outlined,
+                    iconColor: Palette.white,
                     height: 30,
                     borderRadius: 40,
                     text: '',

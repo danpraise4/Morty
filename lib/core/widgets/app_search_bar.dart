@@ -7,20 +7,20 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:morty/core/resources/colors.dart';
 import 'package:morty/core/resources/strings.dart';
-import 'package:morty/core/widgets/bouncing_widget.dart';
-import 'package:morty/features/introduction/app/pages/splash.dart';
+import 'package:morty/features/morty/app/controller/app.controller.dart';
+import 'package:morty/features/morty/app/utils/utils.dart';
 
 class KSearchAppBar extends StatefulWidget implements PreferredSizeWidget {
   final String title;
   final ValueChanged<String>? onSearch;
-  final ValueChanged<Map<String, dynamic>>? onFilterApply;
+  final ValueChanged<Map> onFilterApply;
   final VoidCallback? onClear;
 
   const KSearchAppBar({
     super.key,
     required this.title,
     this.onSearch,
-    this.onFilterApply,
+    required this.onFilterApply,
     this.onClear,
   });
 
@@ -90,7 +90,9 @@ class _KSearchAppBarState extends State<KSearchAppBar> {
             Icons.filter_list,
             color: Palette.white,
           ),
-          onPressed: _showFilterDialog,
+          onPressed: showAddFilter(context, onDetect: () {
+            widget.onFilterApply(searchFilter);
+          }),
         ),
         IconButton(
           icon: Icon(
@@ -123,45 +125,5 @@ class _KSearchAppBarState extends State<KSearchAppBar> {
         },
       ),
     ];
-  }
-
-  void _showFilterDialog() {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Filter Options'),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              // Example filters, you can customize these fields
-              TextField(
-                decoration: InputDecoration(labelText: 'Age'),
-                keyboardType: TextInputType.number,
-              ),
-              TextField(
-                decoration: InputDecoration(labelText: 'Gender'),
-              ),
-            ],
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: Text('Apply'),
-              onPressed: () {
-                // Example filter data
-                Map<String, dynamic> filters = {
-                  'age': 25, // replace with actual input value
-                  'gender': 'Male', // replace with actual input value
-                };
-                if (widget.onFilterApply != null) {
-                  widget.onFilterApply!(filters);
-                }
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
   }
 }

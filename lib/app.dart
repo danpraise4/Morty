@@ -6,7 +6,9 @@ import 'package:morty/core/navigator/krouter_observer.dart';
 import 'package:morty/core/resources/colors.dart';
 import 'package:morty/features/introduction/app/pages/onboarding.dart';
 import 'package:morty/features/introduction/app/pages/splash.dart';
+import 'package:morty/features/morty/app/pages/character.dart';
 import 'package:morty/features/morty/app/pages/dashboard.dart';
+import 'package:morty/features/morty/data/models/character.model.dart';
 
 part 'routes.dart';
 
