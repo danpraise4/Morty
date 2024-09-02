@@ -17,7 +17,7 @@ showAddFilter(context, {required Function onDetect}) {
       builder: (_) {
         return FilterView(
           onChangeDetected: () {
-            onDetect();
+            onDetect.call();
           },
         );
       });

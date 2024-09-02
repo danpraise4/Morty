@@ -120,8 +120,7 @@ class _CharacterState extends State<Character>
                 Palette.primary,
               ),
             ),
-            h15,
-            discountSection(),
+
             h30,
           ],
         ),
@@ -130,64 +129,6 @@ class _CharacterState extends State<Character>
   }
 
 
-
-  Widget discountSection() {
-    return Container(
-      padding: [15, 15].insets,
-      decoration: BoxDecoration(
-        borderRadius: 10.br,
-        color: Palette.primary.withOpacity(.1),
-      ),
-      child: Row(
-        children: [
-          Container(
-            width: 60.w,
-            height: 60.w,
-            padding: 15.insets,
-            decoration: BoxDecoration(
-              color: Palette.white,
-              borderRadius: 10.br,
-            ),
-            child:Container(),
-          ),
-          w15,
-          Expanded(
-              child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Save money!",
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16.sp,
-                    color: Palette.black),
-              ),
-              Text(
-                "Top up now and enjoy the best price in the market",
-                style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14.sp,
-                    color: Palette.black),
-              ),
-              h10,
-              Row(
-                children: [
-              
-                  Text(
-                    "Compare to market price",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 12.sp,
-                        color: Palette.primary),
-                  ),
-                ],
-              )
-            ],
-          ))
-        ],
-      ),
-    );
-  }
 
   Widget sideCircle(String icon, dynamic color) {
     return Container(

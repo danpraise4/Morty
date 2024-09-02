@@ -38,7 +38,7 @@ class _FilterViewState extends State<FilterView> {
             title: "Gender",
             options: genderTypes,
             onTap: (x) {
-              searchFilter['status'] = x;
+              searchFilter['gender'] = x;
               widget.onChangeDetected.call();
             }),
       ],
