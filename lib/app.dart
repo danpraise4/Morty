@@ -4,7 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:morty/core/dependencies/k_route.dart';
 import 'package:morty/core/navigator/krouter_observer.dart';
 import 'package:morty/core/resources/colors.dart';
+import 'package:morty/features/introduction/app/pages/onboarding.dart';
 import 'package:morty/features/introduction/app/pages/splash.dart';
+import 'package:morty/features/morty/data/dashboard.dart';
 
 part 'routes.dart';
 
@@ -60,7 +62,7 @@ class _MortyAppState extends State<MortyApp> with WidgetsBindingObserver {
           debugShowCheckedModeBanner: false,
           onGenerateRoute: onGenerate,
           themeMode: ThemeMode.light,
-          theme: themeData,
+          theme: themeData(context),
         );
       },
     );

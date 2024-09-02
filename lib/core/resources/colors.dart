@@ -57,70 +57,72 @@ MaterialColor primarySwatch = MaterialColor(
   },
 );
 
-final themeData = ThemeData(
-  scaffoldBackgroundColor: Palette.background,
-  textTheme: const TextTheme().apply(
-    bodyColor: Colors.black,
-    displayColor: Colors.black,
-    fontSizeFactor: 1.sp,
-  ),
-  primaryTextTheme: const TextTheme().apply(
-    bodyColor: Colors.black,
-    displayColor: Colors.black,
-    fontSizeFactor: 1.sp,
-  ),
-  elevatedButtonTheme: ElevatedButtonThemeData(
-    style: ElevatedButton.styleFrom(
-      foregroundColor: Colors.white,
-      elevation: 0.0,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8.0),
+themeData(BuildContext context) => ThemeData(
+      scaffoldBackgroundColor: Palette.background,
+      textTheme: Theme.of(context).textTheme.apply(
+            fontFamily: 'Montserrate',
+            bodyColor: Colors.black,
+            displayColor: Colors.black,
+            fontSizeFactor: 1.sp,
+          ),
+      primaryTextTheme: Theme.of(context).textTheme.apply(
+            fontFamily: 'Montserrate',
+            bodyColor: Colors.black,
+            displayColor: Colors.black,
+            fontSizeFactor: 1.sp,
+          ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          foregroundColor: Colors.white,
+          elevation: 0.0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.0),
+          ),
+        ),
       ),
-    ),
-  ),
-  buttonTheme: ButtonThemeData(
-    colorScheme: ColorScheme(
-      brightness: Brightness.light,
-      primary: Palette.primary,
-      onPrimary: Palette.iconColor,
-      secondary: Palette.buttonColor,
-      onSecondary: Colors.black,
-      error: Palette.buttonColor,
-      onError: Colors.white,
-      surface: Palette.cardColor,
-      onSurface: Colors.white,
-    ),
-  ),
-  inputDecorationTheme: InputDecorationTheme(
-    contentPadding: const EdgeInsets.symmetric(
-      horizontal: 20.0,
-      vertical: 24.0,
-    ),
-    enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(28),
-      borderSide: BorderSide(color: Palette.iconColor),
-    ),
-    border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(28.0),
-      borderSide: const BorderSide(color: Color(0xFFCBD2D9)),
-    ),
-    focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(28.0),
-      borderSide: BorderSide(color: Palette.primary, width: 1.6),
-    ),
-    errorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(28.0),
-      borderSide: BorderSide(color: Colors.red.shade300),
-    ),
-  ),
-  appBarTheme: AppBarTheme(
-    elevation: 0.0,
-    backgroundColor: Palette.background,
-    surfaceTintColor: Colors.transparent,
-  ),
-  colorScheme: ColorScheme.light(
-    surface: Palette.background,
-    primary: Palette.primary,
-    tertiary: Palette.cardColor,
-  ),
-);
+      buttonTheme: ButtonThemeData(
+        colorScheme: ColorScheme(
+          brightness: Brightness.light,
+          primary: Palette.primary,
+          onPrimary: Palette.iconColor,
+          secondary: Palette.buttonColor,
+          onSecondary: Colors.black,
+          error: Palette.buttonColor,
+          onError: Colors.white,
+          surface: Palette.cardColor,
+          onSurface: Colors.white,
+        ),
+      ),
+      inputDecorationTheme: InputDecorationTheme(
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 20.0,
+          vertical: 24.0,
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(28),
+          borderSide: BorderSide(color: Palette.iconColor),
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(28.0),
+          borderSide: const BorderSide(color: Color(0xFFCBD2D9)),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(28.0),
+          borderSide: BorderSide(color: Palette.primary, width: 1.6),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(28.0),
+          borderSide: BorderSide(color: Colors.red.shade300),
+        ),
+      ),
+      appBarTheme: AppBarTheme(
+        elevation: 0.0,
+        backgroundColor: Palette.background,
+        surfaceTintColor: Colors.transparent,
+      ),
+      colorScheme: ColorScheme.light(
+        surface: Palette.background,
+        primary: Palette.primary,
+        tertiary: Palette.cardColor,
+      ),
+    );

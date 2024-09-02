@@ -41,3 +41,5 @@ enum DialogPosition { top, bottom, center }
 enum FieldType { text, area, dob, phone, number, gender, customOption }
 
 enum Positions { before, after, leading, extended }
+
+enum ImageType { svg, png }
