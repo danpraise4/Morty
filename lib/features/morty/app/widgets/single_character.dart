@@ -86,9 +86,11 @@ class _SingleCharacterState extends State<SingleCharacter> {
                         Character.route,
                         arguments: (widget.character)),
                     width: 30,
+                    padding: EdgeInsets.zero,
                     icon: Icons.arrow_forward_ios_outlined,
                     iconColor: Palette.white,
                     height: 30,
+                    iconSize: 15,
                     borderRadius: 40,
                     text: '',
                   )
