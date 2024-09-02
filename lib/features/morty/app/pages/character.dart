@@ -36,7 +36,7 @@ class _CharacterState extends State<Character>
     return Scaffold(
       appBar: KAppBar(
         titleText: widget.character.name,
-        onPop: ()=> Navigator.pop(context),
+        onPop: () => Navigator.pop(context),
       ),
       body: contentUI(),
     );
@@ -55,18 +55,7 @@ class _CharacterState extends State<Character>
               w: MediaQuery.sizeOf(context).width,
             ),
             h10,
-            Row(
-              children: [
-                Text(
-                  "Category:",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w800,
-                    fontSize: 16.sp,
-                  ),
-                ),
-                Text(" ${widget.character.name}"),
-              ],
-            ),
+            Text("Species: ${widget.character.species}"),
             h15,
             Text(
               widget.character.name,
@@ -77,95 +66,25 @@ class _CharacterState extends State<Character>
             ),
             h5,
             Text(
-              "MYR ",
+              'Status ${widget.character.status}',
               style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18.sp,
-                  color: Palette.primary),
-            ),
-            h15,
-            sideAction(
-              title: Row(
-                children: [
-                  const Text("Availability:"),
-                  w5,
-                  Text(
-                    "Instore",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 14.sp,
-                        color: Palette.green),
-                  ),
-                ],
-              ),
-              sideCircle: sideCircle(
-                'icon-check',
-                Palette.green,
+                fontWeight: FontWeight.w500,
+                fontSize: 14.sp,
               ),
             ),
-            h15,
-            sideAction(
-              title: const Text("Delivery Time Frame"),
-              subTitle: "2 days-5 working days",
-              sideCircle: sideCircle(
-                'icon-bolt',
-                Palette.orange,
+            h5,
+            Text(
+              'Location ${widget.character.location.name}',
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 14.sp,
               ),
             ),
-            h15,
-            sideAction(
-              title: const Text("Deliver to 5 Cities"),
-              sideCircle: sideCircle(
-                'icon-location',
-                Palette.primary,
-              ),
-            ),
-
+            h5,
             h30,
           ],
         ),
       ),
-    );
-  }
-
-
-
-  Widget sideCircle(String icon, dynamic color) {
-    return Container(
-      width: 30,
-      height: 30,
-      padding: 7.insets,
-      decoration: BoxDecoration(
-          borderRadius: 40.br, color: (color as Color).withOpacity(.2)),
-      child: SvgPicture.asset('$svgPath/$icon.svg'),
-    );
-  }
-
-  Widget sideAction({
-    required Widget title,
-    required Widget sideCircle,
-    String? subTitle,
-  }) {
-    return Row(
-      children: [
-        sideCircle,
-        w10,
-        Expanded(
-            child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            title,
-            if (subTitle != null)
-              Text(
-                subTitle,
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 13.sp,
-                    color: Palette.primary),
-              ),
-          ],
-        ))
-      ],
     );
   }
 }

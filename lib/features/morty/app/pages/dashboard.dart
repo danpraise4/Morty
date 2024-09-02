@@ -42,7 +42,9 @@ class _DashboardState extends State<Dashboard> {
             controller.appBloc.add(GetMovieCharactersEvent.fromMap({...p0}));
           },
           onSearch: (p0) {
-            controller.appBloc.add(GetMovieCharactersEvent(name: p0));
+            searchFilter['name'] = p0.toLowerCase();
+            controller.appBloc
+                .add(GetMovieCharactersEvent.fromMap({...searchFilter}));
           },
         ),
         body: BlocBuilder(

@@ -41,7 +41,6 @@ class _SingleCharacterState extends State<SingleCharacter> {
                 borderRadius: 10.br,
                 child: CachedNetworkImage(
                   imageUrl: widget.character.image,
-                
                   height: 130.h,
                   width: 250.w,
                   fit: BoxFit.cover,
@@ -73,14 +72,15 @@ class _SingleCharacterState extends State<SingleCharacter> {
               const Spacer(),
               Row(
                 children: [
-                  Text(
-                    "MYR ",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 16.sp,
+                  Expanded(
+                    child: Text(
+                      widget.character.origin.name,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 13.sp,
+                      ),
                     ),
                   ),
-                  const Spacer(),
                   AppButton(
                     onPressed: () => MortyApp.navKey.currentState?.pushNamed(
                         Character.route,

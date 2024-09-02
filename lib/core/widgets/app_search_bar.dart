@@ -90,7 +90,7 @@ class _KSearchAppBarState extends State<KSearchAppBar> {
             Icons.filter_list,
             color: Palette.white,
           ),
-          onPressed: showAddFilter(context, onDetect: () {
+          onPressed: () => showAddFilter(context, onDetect: () {
             widget.onFilterApply(searchFilter);
           }),
         ),

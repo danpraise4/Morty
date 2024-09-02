@@ -7,7 +7,7 @@ showAddFilter(context, {required Function onDetect}) {
       context: context,
       clipBehavior: Clip.antiAliasWithSaveLayer,
       constraints: BoxConstraints(
-        maxHeight: 380.h,
+        maxHeight: 450.h,
       ),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
@@ -18,6 +18,7 @@ showAddFilter(context, {required Function onDetect}) {
         return FilterView(
           onChangeDetected: () {
             onDetect.call();
+            Navigator.pop(context);
           },
         );
       });

@@ -1,5 +1,6 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:flutter_svg/svg.dart';
 import 'package:morty/core/resources/constants.dart';
 import 'package:morty/core/resources/enum.dart';
 import 'package:morty/core/resources/strings.dart';
@@ -36,10 +37,8 @@ class AppEmptyList extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Lottie.asset(
-            isSearch
-                ? '$animatedPath/empty.json'
-                : '$animatedPath/no_media.json',
+          SvgPicture.asset(
+            '$svgPath/icon_empty.svg',
             height: 90,
           ),
           h15,

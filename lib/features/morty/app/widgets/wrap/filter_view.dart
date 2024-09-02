@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:morty/core/extension/string_extensions.dart';
+import 'package:morty/core/helpers/helpers.dart';
 import 'package:morty/core/resources/constants.dart';
 import 'package:morty/features/morty/app/controller/app.controller.dart';
 import 'package:morty/features/morty/data/constants/constants.dart';
@@ -21,10 +22,11 @@ class _FilterViewState extends State<FilterView> {
   }
 
   Widget contentUI() {
+    ll(searchFilter);
     return Column(
       children: [
         singleFilter(
-            title: "Status",
+            title: "status",
             options: statusTypes,
             onTap: (x) {
               searchFilter['status'] = x;
@@ -35,7 +37,7 @@ class _FilterViewState extends State<FilterView> {
           color: Colors.grey,
         ),
         singleFilter(
-            title: "Gender",
+            title: "gender",
             options: genderTypes,
             onTap: (x) {
               searchFilter['gender'] = x;
@@ -58,11 +60,14 @@ class _FilterViewState extends State<FilterView> {
             onTap: (){
               onTap(x);
             },
-            child: Row(
-              children: [
-                Checkbox.adaptive(value: searchFilter[title] == x, onChanged: (x){}),
-                Text(x)
-              ],
+            child: Container(
+              color: Colors.transparent,
+              child: Row(
+                children: [
+                  Checkbox.adaptive(value: searchFilter[title].toString() == x, onChanged: (x){}),
+                  Text(x.capitalizeEach)
+                ],
+              ),
             ),
           );
         })
