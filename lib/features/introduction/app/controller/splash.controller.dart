@@ -7,7 +7,7 @@ import 'package:morty/core/storage/storage.dart';
 import 'package:morty/features/introduction/app/pages/onboarding.dart';
 import 'package:morty/features/introduction/data/constants/constants.dart';
 import 'package:morty/features/introduction/data/models/onboarding.model.dart';
-import 'package:morty/features/morty/data/dashboard.dart';
+import 'package:morty/features/morty/app/pages/dashboard.dart';
 
 class IntroductionController {
   BuildContext context;

@@ -1,10 +1,13 @@
 // ignore_for_file: library_private_types_in_public_api, deprecated_member_use
 
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:morty/core/resources/colors.dart';
 import 'package:morty/core/resources/strings.dart';
+import 'package:morty/core/widgets/bouncing_widget.dart';
 import 'package:morty/features/introduction/app/pages/splash.dart';
 
 class KSearchAppBar extends StatefulWidget implements PreferredSizeWidget {
@@ -71,7 +74,9 @@ class _KSearchAppBarState extends State<KSearchAppBar> {
       style: const TextStyle(color: Colors.white, fontSize: 16.0),
       onChanged: (query) {
         if (widget.onSearch != null) {
-          widget.onSearch!(query);
+          EasyDebounce.debounce('-search', 1.seconds, () {
+            widget.onSearch!(query);
+          });
         }
       },
     );
